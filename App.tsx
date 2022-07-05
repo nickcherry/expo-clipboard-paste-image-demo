@@ -12,10 +12,13 @@ export default function App() {
       <Button
         title="Does clipboard have an image?"
         onPress={async () => {
+          setImageUri(undefined);
+
           const hasImage = await Clipboard.hasImageAsync();
 
           if (hasImage) {
             Alert.alert('Image found!');
+
             const clipboardImage = await Clipboard.getImageAsync({
               format: 'png',
             });
@@ -25,7 +28,6 @@ export default function App() {
             }
           } else {
             Alert.alert('No image found :(');
-            setImageUri(undefined);
           }
         }}
       />
